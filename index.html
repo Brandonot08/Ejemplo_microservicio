@@ -3,66 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Microservicio de Facturación</title>
+    <title>Sistema de Facturación Empresarial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            color: white;
+            text-align: center;
         }
+
         .container {
-            max-width: 800px;
-            margin: 0 auto;
+            max-width: 600px;
+            margin: 50px auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .factura-form {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
         .btn {
+            display: inline-block;
             padding: 10px 20px;
-            margin: 5px;
+            margin: 10px 5px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            background-color: #4CAF50;
+            background: #27ae60;
             color: white;
+            font-size: 16px;
+            transition: 0.3s;
         }
+
         .btn:hover {
-            background-color: #45a049;
+            background: #2ecc71;
         }
-        .factura-form {
-            margin: 20px 0;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+
+        .btn-secondary {
+            background: #f39c12;
+        }
+
+        .btn-secondary:hover {
+            background: #e67e22;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Sistema de Facturación</h1>
+        <h1>📄 Sistema de Facturación Empresarial</h1>
         
         <div class="factura-form">
             <h2>Nueva Factura</h2>
             <form id="facturaForm">
-                <div>
-                    <label for="cliente">Cliente:</label>
-                    <input type="text" id="cliente" name="cliente" required>
-                </div>
-                <br>
-                <div>
-                    <label for="monto">Monto:</label>
-                    <input type="number" id="monto" name="monto" step="0.01" required>
-                </div>
-                <br>
-                <div>
-                    <label for="descripcion">Descripción:</label>
-                    <textarea id="descripcion" name="descripcion" rows="3"></textarea>
-                </div>
-                <br>
-                <button type="submit" class="btn">Generar Factura</button>
+                <label for="cliente">👤 Cliente:</label>
+                <input type="text" id="cliente" name="cliente" required>
+
+                <label for="monto">💰 Monto:</label>
+                <input type="number" id="monto" name="monto" step="0.01" required>
+
+                <label for="descripcion">📝 Descripción:</label>
+                <textarea id="descripcion" name="descripcion" rows="3"></textarea>
+
+                <button type="submit" class="btn">✅ Generar Factura</button>
             </form>
         </div>
 
         <div>
-            <button class="btn" onclick="verFacturas()">Ver Facturas</button>
-            <button class="btn" onclick="exportarFacturas()">Exportar Facturas</button>
-            <button class="btn" onclick="anularFactura()">Anular Factura</button>
+            <button class="btn btn-secondary" onclick="verFacturas()">📋 Ver Facturas</button>
+            <button class="btn btn-secondary" onclick="exportarFacturas()">📥 Exportar Facturas</button>
+            <button class="btn btn-secondary" onclick="anularFactura()">❌ Anular Factura</button>
         </div>
     </div>
 
@@ -77,33 +109,24 @@
             const monto = document.getElementById('monto').value;
             const descripcion = document.getElementById('descripcion').value;
 
-            // Aquí iría la lógica para enviar los datos al servidor
-            console.log('Generando factura para:', {
-                cliente,
-                monto,
-                descripcion,
-                fecha: new Date().toISOString()
-            });
+            console.log('Generando factura:', { cliente, monto, descripcion, fecha: new Date().toISOString() });
 
-            alert('Factura generada exitosamente');
+            alert('✅ Factura generada exitosamente');
             document.getElementById('facturaForm').reset();
         }
 
         function verFacturas() {
-            // Aquí iría la lógica para mostrar el listado de facturas
-            alert('Mostrando listado de facturas...');
+            alert('📋 Mostrando listado de facturas...');
         }
 
         function exportarFacturas() {
-            // Aquí iría la lógica para exportar las facturas
-            alert('Exportando facturas...');
+            alert('📥 Exportando facturas...');
         }
 
         function anularFactura() {
-            // Aquí iría la lógica para anular una factura
             const numeroFactura = prompt('Ingrese el número de factura a anular:');
             if (numeroFactura) {
-                alert(`Anulando factura ${numeroFactura}...`);
+                alert(`❌ Anulando factura ${numeroFactura}...`);
             }
         }
     </script>
